@@ -1,7 +1,12 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(../assets/Fonte/VT323_Regular.ttf);
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: myFirstFont;
   background-color: black;
 }
 
@@ -19,24 +24,53 @@ body {
   margin: auto;
 }
 
-.header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
-}
-
 .header .container {
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
 
-.header a {
-  text-decoration: none;
-  color: #e3b062;
+.agora {
+  font-weight: 600;
+  color: #EF00D7;
 }
 
-.agora {
-  font-weight: 800;
+.QuebraPag {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Fases {
+  font-size: 35px;
+  justify-content: space-around;
+  display: flex;
+  
+}
+.UmAoQuatro{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.CincoAoOito{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.NoveAoDoze{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.container .navbar .agora a {
+  color: #EF00D7;
+}
+
+.header a {
+  text-decoration: none;
+  color: #37FFFF;
 }
 
 .navbar {
@@ -45,13 +79,15 @@ body {
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  color: #37FFFF;
+  font-size: 20px;
 }
 
 .titulo {
-  color: #32b9cd;
+  color: #37FFFF;
   width: fit-content;
-  font-weight: 500;
+  height: 100px;
+  width: 120px;
 }
 
 .header h1 {
@@ -59,12 +95,15 @@ body {
 }
 
 .banner {
-  height: var(--tamanho-banner);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  width: 100%;
+  height: 500px;
+  background-image: url('../assets/imgs/Capa.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .banner .container {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -80,17 +119,27 @@ body {
   font-weight: 800;
 }
 
+.banner2 {
+  width: 100%;
+  height: 500px;
+}
+
+.banner2 .container p {
+  font-size: 36px;
+  color: white;
+  width: 280px;
+}
+
+.banner2 .container span {
+  font-weight: 800;
+}
+
 .social {
-  background-color: #e5e5e5;
   display: flex;
 }
 
 .social .container {
   justify-content: center;
-}
-
-.box img {
-  width: 170px;
 }
 
 .social .container .boxes {
@@ -99,17 +148,12 @@ body {
   width: 100%;
 }
 
-.box {
-  width: 280px;
-  height: 450px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .box p {
+  display: flex;
+  justify-content: center;
   text-align: center;
+  color: #37FFFF;
+  font-size: 35px;
 }
 
 .login {
@@ -125,23 +169,24 @@ body {
 }
 
 .card {
-  width: 30%;
-  background-color: #e5e5e5;
+  
+  width: 35%;
+  background-color: #FFFBFE;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-  color: palevioletred;
+  color: black;
   row-gap: 20px;
 }
 
 .card-cadastro {
-  height: 80%;
+  height: 90%;
 }
 
 .card-login {
-  height: 60%;
+  height: 75%;
 }
 
 .card h2 {
@@ -151,19 +196,19 @@ body {
 
 .formulario {
   display: flex;
-  height: 90%;
-  width: 80%;
+  height: 95%;
+  width: 90%;
   justify-content: space-around;
   flex-direction: column;
 }
 
 .formulario span {
-  font-size: 15px;
+  font-size: 25px;
   font-weight: 800;
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #EF00D7;
   height: 30px;
   text-align: center;
   border-radius: 10px;
@@ -177,13 +222,12 @@ body {
 
 .botao {
   cursor: pointer;
-  font-family: "Barlow", sans-serif;
   border: 0;
   border-radius: 5px;
   font-weight: 600;
   font-size: 18px;
-  color: #fff;
-  background-color: #e6005a;
+  color: #FFFBFE;
+  background-color: #EF00D7;
   width: 120px;
   height: 30px;
   align-self: center;
@@ -199,6 +243,11 @@ body {
   width: 50px;
 }
 
+.centro {
+  display: flex;
+  justify-content: center;
+}
+
 #div_erros_login {
   display: none
 }
@@ -210,7 +259,7 @@ body {
 
 .card_erro {
   display: none;
-  background-color: #fff;
+  background-color: #FFFBFE;
   color: black;
   width: 230px;
   position: fixed;
@@ -228,7 +277,6 @@ body {
 .footer {
   height: var(--tamanho-footer);
   width: 100%;
-  background-color: #32b9cd;
   color: #fff;
 }
 
@@ -246,14 +294,4 @@ body {
 .footer .container .version {
   font-size: 12px;
   font-weight: 800;
-}
-
-.simulador {
-  color: white;
-}
-
-.simulador .container {
-  flex-direction: column;
-  overflow: scroll; 
-  height: var(--tamanho-simulador);
 }
