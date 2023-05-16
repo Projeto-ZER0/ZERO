@@ -96,7 +96,7 @@ body {
 
 .banner {
   width: 100%;
-  height: 500px;
+  height: 100%;
   background-image: url('../assets/imgs/Capa.jpg');
   background-size: cover;
   background-repeat: no-repeat;
