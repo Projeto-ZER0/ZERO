@@ -6,44 +6,40 @@
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
 
-CREATE DATABASE aquatech;
+create database ProjectZero;
+use ProjectZero;
 
-USE aquatech;
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
+create table Usuario (
+idUsuario int primary key auto_increment,
+Nome Varchar(50),
+Email Varchar(50),
+Senha int,
+fkTierList int,
+constraint fkTierList
+foreign key (fkTierList) 
+references TierList(idTierlist)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+create table Tierlist (
+idTierlist int primary key auto_increment,
+Fita1 varchar(45),
+Fita2 varchar(45),
+Fita3 varchar(45),
+Personagem1 varchar(45),
+Personagem2 varchar(45),
+Personagem3 varchar(45)
+) auto_increment = 1000;
+
+create table TierListFavorita (
+idTierListFavorita int primary key auto_increment,
+FitaFav varchar(45),
+PersonagemFav varchar(45),
+fkTierList int,
+constraint FkTL foreign key (fkTierList)
+references Tierlist(idTierList)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300)
-);
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
 
 
 /*

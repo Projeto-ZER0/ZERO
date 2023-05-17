@@ -44,24 +44,26 @@ body {
   font-size: 35px;
   justify-content: space-around;
   display: flex;
-  
 }
 .UmAoQuatro{
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  color: #ae00fa;
 }
 
 .CincoAoOito{
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  color: #ae00fa;
 }
 
 .NoveAoDoze{
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  color: #ae00fa;
 }
 
 .container .navbar .agora a {
@@ -158,7 +160,7 @@ body {
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-image: url('../assets/imgs/Capa.jpg');
   background-size: cover;
 }
 
