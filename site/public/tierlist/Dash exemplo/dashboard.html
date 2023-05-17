@@ -1,99 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTech | Dashboards</title>
 
-  <title>Project ZERO | TIERLIST</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="dashboards.css">
+    <script src="../js/funcoes.js"></script>
 
-  <script src="./js/funcoes.js"></script>
-
-  <link rel="icon" href="../assets/icon/Icon.png">
-  <link rel="stylesheet" href="tierlist.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <!-- <link
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet"> -->
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload=" atualizarFeed()">
-  <div class="header">
-    <div class="container">
-      <img class="titulo" src="../assets/imgs/Logo.png">
-      <ul class="navbar">
-        <li>
-          <a href="../index.html">Home Page</a>
-        </li>
-        <li>|</li>
-        <li class="agora">
-          <a href="#">Tier List</a>
-        </li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="base">
-    <div class="perguntas">
-      Faça seu top3 de melhores personagens aqui:
-      <input id="input_personagem">
-      <button onclick="Personagens()">MakeList</button>
-      <div id="div_personagem"></div>
-      <div id="graficos">
-        <div id="grafico1" class="display-block">
-          <h3 class="tituloGraficos">
-            <span id="tituloAquario1"></span>
-          </h3>
-          <div class="graph">
-            <canvas id="myChartCanvas1"></canvas>
-          </div>
-          <div class="label-captura">
-            <p id="avisoCaptura1" style="color: white"></p>
-          </div>
+    <div class="janela">
+        <div class="header-left">
+            <h1>AquaTech</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./cards.html">
+                    <h3>Aquários</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav">
+
+                <h3>Gráficos</h3>
+
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Avisos</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
         </div>
-        <br>
-        <br>
-        <br>
-        Faça seu top3 de melhores fitas aqui:
-        <input id="input_fitas">
-        <button onclick="Fitas()">MakeList</button>
-        <div id="div_personagem"></div>
-        <div id="grafico2" class="display-none">
-          <h3 class="tituloGraficos">
-            <span id="tituloAquario2"></span>
-          </h3>
-          <div class="graph">
-            <canvas id="myChartCanvas2"></canvas>
-          </div>
-          <div class="label-captura">
-            <p id="avisoCaptura2" style="color: white"></p>
-          </div>
+
+        <div class="dash">
+            <div class="btns-dash">
+                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+                <button class="btn-chart btn-pink" onclick="exibirAquario(1)" id="btnAquario1">Aquario 1</button>
+                <button class="btn-chart btn-white" onclick="exibirAquario(2)" id="btnAquario2">Aquario 2</button>
+                <button class="btn-chart btn-white" onclick="exibirAquario(3)" id="btnAquario3">Aquario 3</button>
+                <button class="btn-chart btn-white" onclick="exibirAquario(4)" id="btnAquario4">Aquario 4</button>
+            </div>
+            <div id="graficos">
+                <div id="grafico1" class="display-block">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario1">123</span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas1"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura1" style="color: white"></p>
+                    </div>
+                </div>
+
+                <div id="grafico2" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario2"></span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas2"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura2" style="color: white"></p>
+                    </div>
+                </div>
+
+                <div id="grafico3" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario3"></span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas3"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura3" style="color: white"></p>
+                    </div>
+                </div>
+
+                <div id="grafico4" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario4"></span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas4"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura4" style="color: white"></p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <h4>Direitos reservados a Project ZERO ©</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
+
 </body>
 
 </html>
 
 <script>
-  ListaPersonagens = []
-  ListaFitas = []
-
-  function Personagens() {
-
-  }
-
-  function Fitas() {
-
-  }
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
@@ -103,17 +133,18 @@
     function obterDadosGraficos() {
         obterDadosGrafico(1)
         obterDadosGrafico(2)
-
+        obterDadosGrafico(3)
+        obterDadosGrafico(4)
     }
 
     verificar_autenticacao();
 
-    function alterarTitulo(idTierFavorito) {
-        var TierFavorito = document.getElementById(`TierFavorito${idTierFavorito}`)
-        TierFavorito.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Tier " + idTierFavorito + "</span>"
+    function alterarTitulo(idAquario) {
+        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
+        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idAquario + "</span>"
     }
 
-    function exibirAquario(idTierFavorito) {
+    function exibirAquario(idAquario) {
         let todosOsGraficos = document.getElementById("graficos")
 
         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
@@ -154,21 +185,21 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idTierFavorito) {
+    function obterDadosGrafico(idAquario) {
 
-        alterarTitulo(idTierFavorito)
+        alterarTitulo(idAquario)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idTierFavorito}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idFavorito);
+                    plotarGrafico(resposta, idAquario);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -193,14 +224,14 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Personagens que os fãs mais gostam',
+                label: 'Umidade',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
             },
             {
-                label: 'Fitas que os fãs mais gostam',
+                label: 'Temperatura',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(199, 52, 52)',
@@ -240,7 +271,7 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico(idTierFavorito, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
     }
 
 
@@ -249,11 +280,11 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idTierfavorito, dados, myChart) {
+    function atualizarGrafico(idAquario, dados, myChart) {
 
 
 
-        fetch(`/medidas/tempo-real/${idTierfavorito}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -261,7 +292,7 @@
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idTierfavorito}`)
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
                     avisoCaptura.innerHTML = ""
 
 
@@ -289,12 +320,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idTierfavorito, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idTierfavorito, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
             }
         })
             .catch(function (error) {
@@ -302,5 +333,4 @@
             });
 
     }
-</script>
 </script>

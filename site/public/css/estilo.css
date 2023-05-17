@@ -113,7 +113,7 @@ body {
 
 .banner .container p {
   font-size: 36px;
-  color: white;
+  color: #FFFBFE;
   width: 280px;
 }
 
@@ -128,7 +128,7 @@ body {
 
 .banner2 .container p {
   font-size: 36px;
-  color: white;
+  color: #FFFBFE;
   width: 280px;
 }
 
@@ -279,7 +279,7 @@ body {
 .footer {
   height: var(--tamanho-footer);
   width: 100%;
-  color: #fff;
+  color: #FFFBFE;
 }
 
 .footer h4 {
