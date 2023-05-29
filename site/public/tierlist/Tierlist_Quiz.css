@@ -18,6 +18,10 @@
     --tamanho-footer: 65px;
   }
   
+  .Quiz{
+color: #FFFBFE;
+  }
+
   .container {
     display: flex;
     width: 80%;
