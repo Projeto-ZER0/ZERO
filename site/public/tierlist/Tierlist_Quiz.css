@@ -18,6 +18,18 @@
     --tamanho-footer: 65px;
   }
   
+  .resultado-grafico {
+    position: relative;
+    width: 30%;
+    height: 30%;
+  }
+
+  .tituloGraficos {
+    color: rgb(216, 216, 216);
+    display: flex;
+    justify-content: center;
+  }
+
   .Quiz{
 color: #FFFBFE;
   }

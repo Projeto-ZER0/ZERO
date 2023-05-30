@@ -8,8 +8,6 @@
 
   <title>Project ZERO | TIERLIST</title>
 
-  <script src="./js/funcoes.js"></script>
-
   <link rel="icon" href="../assets/icon/Icon.png">
   <link rel="stylesheet" href="Tierlist_Quiz.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -79,12 +77,12 @@
 
       div_personagem.innerHTML = ``
       var contadorP = 1
-      for(var contador = 0;contador <= ListaPersonagens.length ;contador+= 1) {
+      for(var contador = 0;contador <= ListaPersonagens.length ;contador++) {
         contadorP++
-        if(contador != 1) {
-          div_personagem.innerHTML += `${contador + 1}° - ${ListaPersonagens[contador]} é seu/sua personagem favorito(a)<br>`
+        if(contador == 1) {
+          div_personagem.innerHTML += `${contador}° - ${ListaPersonagens[contador - 1]} é seu/sua personagem favorito(a)<br>`
         } else if (contador >= 2 ) {
-          div_personagem.innerHTML += `${contadorP}° - ${ListaPersonagens[contador]}<br>`
+          div_personagem.innerHTML += `${contador}° - ${ListaPersonagens[contador - 1]}<br>`
         }
       }
     }
@@ -101,9 +99,9 @@
       div_fitas.innerHTML = ``
       for(var contador = 0; contador <= ListaFitas.length ;contador++) {
         if(contador == 1) {
-          fiv_fitas.innerHTML = `${contador}° - ${ListaFitas[contador]} é sua fita favorita <br>`
+          div_fitas.innerHTML = `${contador}° - ${ListaFitas[contador - 1]} é sua fita favorita <br>`
         } else {
-          fiv_fitas.innerHTML += `${contador}° - ${ListaFitas[contador]}<br>`
+          div_fitas.innerHTML += `${contador}° - ${ListaFitas[contador - 1]}<br>`
         }
       }
     }
