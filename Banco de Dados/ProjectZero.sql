@@ -21,8 +21,8 @@ references Usuario(idUsuario)
 
 create table Quiz (
 idQuiz int primary key auto_increment,
-QtdAcertosPorcent varchar(45),
-QtdErrosPorcent varchar(45)
+QtdAcertosPorcent int,
+QtdErrosPorcent int
 );
 
 INSERT INTO Quiz values
