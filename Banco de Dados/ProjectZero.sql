@@ -6,7 +6,7 @@ idUsuario int primary key auto_increment,
 Nome Varchar(50),
 Email Varchar(50),
 Senha char(8),
-idQuiz int, constraint fkQuiz foreign key (fkQuiz) references Quiz(idQuiz)
+fkQuiz int, constraint fkQuiz foreign key (fkQuiz) references Quiz(idQuiz)
 );
 select * from usuario;
 create table Tierlist (
@@ -24,3 +24,9 @@ idQuiz int primary key auto_increment,
 QtdAcertosPorcent varchar(45),
 QtdErrosPorcent varchar(45)
 );
+
+INSERT INTO Quiz values
+(null, 10, 0);
+
+INSERT INTO usuario values
+(null, 'Julio', 'julio.dahi@sptech.school', 12345678, 1);

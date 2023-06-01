@@ -112,6 +112,7 @@
       const respostasCorretas = ['a', 'b', 'a', 'c', 'b', 'b', 'a', 'c', 'a', 'b'];
       const numPerguntas = 10;
       let numAcertos = 0;
+      let numErros = 0;
 
       for (let i = 1; i <= numPerguntas; i++) {
         const respostaSelecionada = document.querySelector(`input[name=q${i}]:checked`);
@@ -119,11 +120,14 @@
           const resposta = respostaSelecionada.value;
           if (resposta === respostasCorretas[i - 1]) {
             numAcertos++;
+          } else {
+            numErros++;
           }
         }
       }
 
       const porcentagemAcertos = (numAcertos / numPerguntas) * 100;
+      const porcentagemErros = (numErros / numPerguntas) * 10-0;
 
       document.getElementById('acertos').innerHTML = `Você acertou ${numAcertos} perguntas.`;
       document.getElementById('porcentagem').innerHTML = `Porcentagem de acertos: ${porcentagemAcertos}%`;

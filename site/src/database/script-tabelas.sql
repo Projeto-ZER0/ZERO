@@ -13,31 +13,33 @@ create table Usuario (
 idUsuario int primary key auto_increment,
 Nome Varchar(50),
 Email Varchar(50),
-Senha int,
-fkTierList int,
-constraint fkTierList
-foreign key (fkTierList) 
-references TierList(idTierlist)
+Senha char(8),
+fkQuiz int, constraint fkQuiz foreign key (fkQuiz) references Quiz(idQuiz)
 );
-
+select * from usuario;
 create table Tierlist (
 idTierlist int primary key auto_increment,
-Fita1 varchar(45),
-Fita2 varchar(45),
-Fita3 varchar(45),
-Personagem1 varchar(45),
-Personagem2 varchar(45),
-Personagem3 varchar(45)
-) auto_increment = 1000;
-
-create table TierListFavorita (
-idTierListFavorita int primary key auto_increment,
 FitaFav varchar(45),
 PersonagemFav varchar(45),
-fkTierList int,
-constraint FkTL foreign key (fkTierList)
-references Tierlist(idTierList)
+fkUsuario int,
+constraint fkUsuario
+foreign key (fkUsuario) 
+references Usuario(idUsuario)
+) auto_increment = 1000;
+
+create table Quiz (
+idQuiz int primary key auto_increment,
+QtdAcertosPorcent int,
+QtdErrosPorcent int
 );
+
+INSERT INTO Quiz values
+(null, 10, 0);
+
+INSERT INTO usuario values
+(null, 'Julio', 'julio.dahi@sptech.school', 12345678, 1);
+
+
 
 
 
