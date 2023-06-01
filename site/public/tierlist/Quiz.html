@@ -12,6 +12,8 @@
   <link rel="icon" href="../assets/icon/Icon.png">
   <link rel="stylesheet" href="Tierlist_Quiz.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <!-- <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet"> -->
@@ -101,7 +103,7 @@
     <p id="porcentagem"></p>
   </div>
 
-  <div id="resultado-grafico" style="display: none;">
+  <div id="resultado-grafico" style="display: none; width: 30%; height: 30%;">
     <canvas id="QuizResultado"></canvas>
   </div>
 </div>
@@ -127,7 +129,7 @@
       }
 
       const porcentagemAcertos = (numAcertos / numPerguntas) * 100;
-      const porcentagemErros = (numErros / numPerguntas) * 10-0;
+      const porcentagemErros = (numErros / numPerguntas) * 100;
 
       document.getElementById('acertos').innerHTML = `Você acertou ${numAcertos} perguntas.`;
       document.getElementById('porcentagem').innerHTML = `Porcentagem de acertos: ${porcentagemAcertos}%`;
@@ -137,12 +139,10 @@
       document.getElementById('resultado-grafico').style.display = 'block';
     
       const label = ['Acertos%', 'Erros%']
-
       const data = {
-        labels: label,
         datasets: [{
           label: 'Acertos% x Erros%',
-          data: [40, 60],
+          data: [porcentagemAcertos, porcentagemErros],
           backgroundColor: [
             '#EF00D7',
             '#37FFFF'
