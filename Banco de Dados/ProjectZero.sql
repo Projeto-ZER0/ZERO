@@ -26,7 +26,12 @@ QtdErrosPorcent int
 );
 
 INSERT INTO Quiz values
-(null, 10, 0);
+(null, 10, 0),
+(null, 9, 0),
+(null, 8, 0),
+(null, 7, 0);
 
 INSERT INTO usuario values
 (null, 'Julio', 'julio.dahi@sptech.school', 12345678, 1);
+
+select COUNT(QtdAcertosPorcent) AS quantidade, QtdAcertosPorcent AS acertos from Quiz GROUP BY QtdAcertosPorcent;
