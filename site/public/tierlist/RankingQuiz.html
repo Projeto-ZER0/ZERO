@@ -37,11 +37,15 @@
     </div>
   </div>
 
+  <button id="Ranking" style="display: block;" onclick="mostrarRanking()">Mostrar Ranking</button>
 
+  <div id="resultado-grafico" style="display: none; width: 30%; height: 30%;">
+    <canvas id="QuizResultado"></canvas>
+  </div>
 
     <div class="footer">
       <div class="container">
-        <h4>Direitos reservados a Project ZERO ©</h4>
+        <h4 style="color: white;">Direitos reservados a Project ZERO ©</h4>
         <span class="version">v1.0.0</span>
       </div>
     </div>
@@ -50,8 +54,39 @@
 </html>
 
 <script>
-  
- 
-    
-</script>
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  function mostrarRanking() {
+
+    document.getElementById('resultado-grafico').style.display = 'block';
+    document.getElementById('Ranking').style.display = 'none';
+
+
+  for (var i = 0; i < results.length; i++) {
+                NPessoas.push(results[i].NPessoas);
+                Respostas.push(results[i].Respostas);
+  }
+
+  const ctx = document.getElementById('QuizResultado').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: NPessoas,
+                    datasets: [{
+                        label: 'Respostas',
+                        data: respostas,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+          }
+          
 </script>

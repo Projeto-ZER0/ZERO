@@ -21,10 +21,10 @@ references Usuario(idUsuario)
 
 create table Quiz (
 idQuiz int primary key auto_increment,
-QtdAcertosPorcent int,
-QtdErrosPorcent int
+Acertos int,
+Erros int
 );
-
+select * from Quiz;
 INSERT INTO Quiz values
 (null, 10, 0),
 (null, 9, 0),

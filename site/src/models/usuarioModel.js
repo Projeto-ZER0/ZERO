@@ -1,5 +1,5 @@
 var database = require("../database/config")
-var i = 0;
+const i = 0;
 
 function listar() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
@@ -26,7 +26,7 @@ function cadastrar(Nome, Email, Senha, fkQuiz) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO Usuario (Nome, Email, Senha, fkQuiz) VALUES ('${Nome}', '${Email}', '${Senha}', '${i+1}');
+        INSERT INTO Usuario (Nome, Email, Senha, fkQuiz) VALUES ('${Nome}', '${Email}', '${Senha}', '1');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -35,5 +35,5 @@ function cadastrar(Nome, Email, Senha, fkQuiz) {
 module.exports = {
     entrar,
     cadastrar,
-    listar,
+    listar
 };
