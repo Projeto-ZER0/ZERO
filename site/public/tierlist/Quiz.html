@@ -111,11 +111,13 @@
 </body>
 
 <script>
+  var numAcertos = 0;
+  var numErros = 0;
   function calcularResultado() {
     const respostasCorretas = ['a', 'b', 'a', 'c', 'b', 'b', 'a', 'c', 'a', 'b'];
     const numPerguntas = 10;
-    var numAcertos = 0;
-    var numErros = 0;
+    // var numAcertos = 0;
+    // var numErros = 0;
 
     for (var i = 1; i <= numPerguntas; i++) {
       const respostaSelecionada = document.querySelector(`input[name=q${i}]:checked`);
@@ -123,11 +125,14 @@
         const resposta = respostaSelecionada.value;
         if (resposta === respostasCorretas[i - 1]) {
           numAcertos++;
+          console.log(numAcertos)
         } else {
           numErros++;
+          console.log(numErros)
         }
       }
     }
+
 
     const porcentagemAcertos = (numAcertos / numPerguntas) * 100;
     const porcentagemErros = (numErros / numPerguntas) * 100;
@@ -137,49 +142,53 @@
 
     document.getElementById('quiz-container').style.display = 'none';
     document.getElementById('resultado-container').style.display = 'block';
-    document.getElementById('resultado-grafico').style.display = 'block';
 
-
-    // Enviando o valor da nova input
-    fetch("/quiz/calcularResultado", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        acertoServer: numAcertos,
-        erroServer: numErros
-      })
-    }).then(function (resposta) {
-
-      console.log("resposta: ", resposta);
-
-      if (resposta.ok) {
-        cardErro.style.display = "block";
-
-        mensagem_erro.innerHTML = "Quiz realizado com sucesso! Redirecionando para tela de Resultado";
-
-        setTimeout(() => {
-          window.location = "login.html";
-        }, "2000")
-
-        limparFormulario();
-        finalizarAguardar();
-      } else {
-        throw ("Houve um erro ao tentar calcular o Resultado!");
-      }
-    }).catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
-      finalizarAguardar();
-    });
-
-    return false;
+    // Enviando o valor da nova inputss
+    cadastrarQuiz()
   }
+    
 
-  function sumirMensagem() {
-        cardErro.style.display = "none"
+    function cadastrarQuiz() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var AcertosVar = Number(numAcertos);
+        var ErrosVar = Number(numErros);
+        console.log(AcertosVar)
+        console.log(ErrosVar)
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarQuiz", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                acertoServer: AcertosVar,
+                erroServer: ErrosVar
+          
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "RankingQuiz.html";
+                }, "2000")
+           
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);           
+        });
+        return false;
     }
 
 </script>

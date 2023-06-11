@@ -26,12 +26,13 @@ Erros int
 );
 select * from Quiz;
 INSERT INTO Quiz values
-(null, 10, 0),
-(null, 9, 0),
-(null, 8, 0),
-(null, 7, 0);
+(null, 10, 0);
 
 INSERT INTO usuario values
-(null, 'Julio', 'julio.dahi@sptech.school', 12345678, 1);
+(null, 'Teste6', 'teste6@teste.com', 123456, 1);
 
-select COUNT(QtdAcertosPorcent) AS quantidade, QtdAcertosPorcent AS acertos from Quiz GROUP BY QtdAcertosPorcent;
+INSERT INTO Quiz (Acertos, Erros) VALUES (10, 0);
+
+select COUNT(Acertos) AS quantidade, Acertos AS acertos from Quiz GROUP BY Acertos;
+
+
