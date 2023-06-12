@@ -105,6 +105,7 @@
       <h3>Resultado</h3>
       <p id="acertos"></p>
       <p id="porcentagem"></p>
+      <button onclick="redirecionar()">Ir para o Ranking</button>
     </div>
 
   </div>
@@ -183,10 +184,6 @@
 
             if (resposta.ok) {
                 mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "RankingQuiz.html";
-                }, "2000")
            
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -195,6 +192,13 @@
             console.log(`#ERRO: ${resposta}`);           
         });
         return false;
+
+
+        
     }
 
+    function redirecionar() {
+      window.location = "RankingQuiz.html"
+      quiz.style.display = 'none'
+    }
 </script>

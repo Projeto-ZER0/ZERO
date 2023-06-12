@@ -24,6 +24,11 @@
     height: 30%;
   }
 
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+
   .tituloGraficos {
     color: rgb(216, 216, 216);
     display: flex;

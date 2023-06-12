@@ -39,7 +39,9 @@
   </div>
 </div>
 
+<div class="button">
 <button id="Ranking" style="display: block;" onclick="mostrarRanking()">Mostrar Ranking</button>
+</div>
 
 <div id="resultado-grafico" style="display: none; width: 30%; height: 30%;">
   <canvas id="QuizResultado"></canvas>
@@ -56,6 +58,9 @@
 </html>
 
 <script>
+  if (sessionStorage.ID_QUIZ != 'null') {
+    quiz.style.display = "block"
+  }
   // function mostrarRanking() {
 
   //   document.getElementById('resultado-grafico').style.display = 'block';
