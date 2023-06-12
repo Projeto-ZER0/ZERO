@@ -6,87 +6,187 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Project ZERO | TIERLIST</title>
+  <title>Project ZERO | RANKING QUIZ</title>
 
   <link rel="icon" href="../assets/icon/Icon.png">
   <link rel="stylesheet" href="Tierlist_Quiz.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <!-- <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet"> -->
 </head>
 
 <div class="header">
-    <div class="container">
-      <img class="titulo" src="../assets/imgs/Logo.png">
-      <ul class="navbar">
-        <li>
-          <a href="Quiz.html">Quiz</a>
-        </li>
-        <li class="agora">
-            <a href="#">Ranking Quiz</a>
-        </li>
-        <li>
-          <a href="tierlist.html">Tier List</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="../index.html">Sair</a>
-        </li>
-      </ul>
-    </div>
+  <div class="container">
+    <img class="titulo" src="../assets/imgs/Logo.png">
+    <ul class="navbar">
+      <li>
+        <a href="Quiz.html">Quiz</a>
+      </li>
+      <li class="agora">
+        <a href="#">Ranking Quiz</a>
+      </li>
+      <li>
+        <a href="tierlist.html">Tier List</a>
+      </li>
+      <li>|</li>
+      <li>
+        <a href="../index.html">Sair</a>
+      </li>
+    </ul>
   </div>
+</div>
 
-  <button id="Ranking" style="display: block;" onclick="mostrarRanking()">Mostrar Ranking</button>
+<button id="Ranking" style="display: block;" onclick="mostrarRanking()">Mostrar Ranking</button>
 
-  <div id="resultado-grafico" style="display: none; width: 30%; height: 30%;">
-    <canvas id="QuizResultado"></canvas>
+<div id="resultado-grafico" style="display: none; width: 30%; height: 30%;">
+  <canvas id="QuizResultado"></canvas>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <h4 style="color: white;">Direitos reservados a Project ZERO ©</h4>
+    <span class="version">v1.0.0</span>
   </div>
-
-    <div class="footer">
-      <div class="container">
-        <h4 style="color: white;">Direitos reservados a Project ZERO ©</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
+</div>
 </body>
 
 </html>
 
 <script>
-  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  // function mostrarRanking() {
+
+  //   document.getElementById('resultado-grafico').style.display = 'block';
+  //   document.getElementById('Ranking').style.display = 'none';
+
+  //   fetch("/usuarios/mostrarRanking").then(function (resposta) {
+  //     console.log("ESTOU NO THEN DO entrar()!")
+
+  //     if (resposta.ok) {
+  //       console.log(resposta);
+
+  //         const ctx = document.getElementById('QuizResultado').getContext('3d');
+  //         new Chart(ctx, {
+  //           type: 'bar',
+  //           data: {
+  //             labels: resposta.quantidade,
+  //             datasets: [{
+  //               label: 'Respostas',
+  //               data: resposta.acertos,
+  //               backgroundColor: 'rgba(75, 192, 192, 0.2)',
+  //               borderColor: 'rgba(75, 192, 192, 1)',
+  //               borderWidth: 1
+  //             }]
+  //           },
+  //           options: {
+  //             scales: {
+  //               y: {
+  //                 beginAtZero: true
+  //               }
+  //             }
+  //           }
+  //         });
+
+  //       resposta.json().then(json => {
+  //         console.log(json);
+  //         console.log(JSON.stringify(json));
+
+
+  //         // sessionStorage.EMAIL_USUARIO = json.Email;
+  //         // sessionStorage.NOME_USUARIO = json.Nome;
+  //         // sessionStorage.ID_USUARIO = json.idUsuario;
+
+  //       });
+
+  //     } else {
+
+  //       console.log("Houve um erro ao tentar realizar o login!");
+
+  //       resposta.text().then(texto => {
+  //         console.error(texto);
+  //       });
+  //     }
+
+  //   }).catch(function (erro) {
+  //     console.log(erro);
+  //   })
+
+  //   return false;
+
+  // }
+
   function mostrarRanking() {
 
     document.getElementById('resultado-grafico').style.display = 'block';
     document.getElementById('Ranking').style.display = 'none';
 
+    fetch(`/usuarios/mostrarRanking`).then(function (resposta) {
 
-  for (var i = 0; i < results.length; i++) {
-                NPessoas.push(results[i].NPessoas);
-                Respostas.push(results[i].Respostas);
+      console.log('DENTRO DO FETCH')
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+          plotarGrafico(resposta);
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
   }
 
-  const ctx = document.getElementById('QuizResultado').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: NPessoas,
-                    datasets: [{
-                        label: 'Respostas',
-                        data: respostas,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
+  // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+  // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+  // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+  function plotarGrafico(resposta) {
+
+    console.log('iniciando plotagem do gráfico...' + resposta.quantidade);
+
+    // Criando estrutura para plotar gráfico - labels
+    var label = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: label,
+      datasets: [{
+        label: 'Respostas',
+        data: [],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }],
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
           }
-          
+        }
+      }
+    }
+
+    console.log(resposta.length);
+
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+            label.push(registro.acertos);
+            dados.datasets[0].data.push(registro.quantidade);
+        }
+
+    const config = {
+      type: 'bar',
+      data: dados,
+    };
+
+    let myChart = new Chart(
+      document.getElementById(`QuizResultado`),
+      config
+    );
+  };
+
 </script>

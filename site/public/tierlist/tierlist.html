@@ -21,7 +21,7 @@
     <div class="container">
       <img class="titulo" src="../assets/imgs/Logo.png">
       <ul class="navbar">
-        <li>
+        <li id="quiz">
           <a href="Quiz.html">Quiz</a>
         </li>
       <li>
@@ -65,6 +65,13 @@
 </html>
 
 <script>
+
+  
+
+  if(sessionStorage.ID_QUIZ != 'null') {
+    quiz.style.display = "none"
+  }
+
   var ListaFitasEscolha = ['Fábrica', 'Hotel', 'Clube', 'Prisão', 'DragonTape', 'Bunker1', 'Bunker2', 'Laborátorio', 'Matadouro', 'Estúdio', 'Chinatown', 'Mansão']
   var ListaPersonagensEscolha = ['Zero', 'Fifiteen', 'Psicólogo', 'SNOW', 'Garotinha', 'V', 'Sr.Kissyface', 'MURALHA', 'Homens Mascarados', 'HeadHunter']
   var ListaPersonagens = []
