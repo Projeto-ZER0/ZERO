@@ -112,6 +112,10 @@
 </body>
 
 <script>
+if (sessionStorage.ID_QUIZ != 'null') {
+    quiz.style.display = "none"
+  }
+
   var numAcertos = 0;
   var numErros = 0;
   var fkUsuario = Number(sessionStorage.getItem('ID_USUARIO'))

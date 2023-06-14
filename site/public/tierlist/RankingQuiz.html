@@ -43,7 +43,7 @@
 <button id="Ranking" style="display: block;" onclick="mostrarRanking()">Mostrar Ranking</button>
 </div>
 
-<div id="resultado-grafico" style="display: none; width: 30%; height: 30%;">
+<div id="resultado-grafico" style="display: none; width: 50%; height: 50%;">
   <canvas id="QuizResultado"></canvas>
 </div>
 
@@ -59,68 +59,8 @@
 
 <script>
   if (sessionStorage.ID_QUIZ != 'null') {
-    quiz.style.display = "block"
+    quiz.style.display = "none"
   }
-  // function mostrarRanking() {
-
-  //   document.getElementById('resultado-grafico').style.display = 'block';
-  //   document.getElementById('Ranking').style.display = 'none';
-
-  //   fetch("/usuarios/mostrarRanking").then(function (resposta) {
-  //     console.log("ESTOU NO THEN DO entrar()!")
-
-  //     if (resposta.ok) {
-  //       console.log(resposta);
-
-  //         const ctx = document.getElementById('QuizResultado').getContext('3d');
-  //         new Chart(ctx, {
-  //           type: 'bar',
-  //           data: {
-  //             labels: resposta.quantidade,
-  //             datasets: [{
-  //               label: 'Respostas',
-  //               data: resposta.acertos,
-  //               backgroundColor: 'rgba(75, 192, 192, 0.2)',
-  //               borderColor: 'rgba(75, 192, 192, 1)',
-  //               borderWidth: 1
-  //             }]
-  //           },
-  //           options: {
-  //             scales: {
-  //               y: {
-  //                 beginAtZero: true
-  //               }
-  //             }
-  //           }
-  //         });
-
-  //       resposta.json().then(json => {
-  //         console.log(json);
-  //         console.log(JSON.stringify(json));
-
-
-  //         // sessionStorage.EMAIL_USUARIO = json.Email;
-  //         // sessionStorage.NOME_USUARIO = json.Nome;
-  //         // sessionStorage.ID_USUARIO = json.idUsuario;
-
-  //       });
-
-  //     } else {
-
-  //       console.log("Houve um erro ao tentar realizar o login!");
-
-  //       resposta.text().then(texto => {
-  //         console.error(texto);
-  //       });
-  //     }
-
-  //   }).catch(function (erro) {
-  //     console.log(erro);
-  //   })
-
-  //   return false;
-
-  // }
 
   function mostrarRanking() {
 

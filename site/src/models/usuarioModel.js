@@ -44,6 +44,18 @@ function cadastrarQuiz(Acertos, Erros, fkUsuario) {
     return database.executar(instrucao);
 }
 
+function cadastrarTier(FitaFav, PersonagemFav, fkUsuarioT) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >>  e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarTier():", FitaFav, PersonagemFav, fkUsuarioT);
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        INSERT INTO Quiz (Acertos, Erros, fkUsuario) VALUES ('${FitaFav}', '${PersonagemFav}', ${fkUsuarioT});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function mostrarRanking() {
     var instrucao =
         `

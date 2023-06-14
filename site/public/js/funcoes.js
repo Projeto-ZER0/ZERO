@@ -52,3 +52,6 @@ function fecharModal() {
     divModal.style.display = "none";
 }
 
+if(sessionStorage.ID_QUIZ != 'null') {
+    quiz.style.display = "none"
+  }

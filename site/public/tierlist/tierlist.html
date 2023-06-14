@@ -53,6 +53,9 @@
       <button onclick="Fitas()">MakeList</button>
       <div id="div_fitas"></div>
         
+      <!-- <div class="button">
+        <button onclick="cadastrarTier()">Cadastrar Favoritos</button>
+      </div> -->
 
     <div class="footer">
       <div class="container">
@@ -75,6 +78,7 @@
   var ListaPersonagens = []
   var ListaFitas = []
 
+  
   function Personagens() {
     var personagens = input_personagem.value
     
@@ -114,6 +118,56 @@
       }
     }
   }
+
+  // var FitaFavorita = ListaFitas[1]
+  // var PersonagemFavorita = ListaPersonagens[1]
+  // var fkUsuario = Number(sessionStorage.getItem('ID_USUARIO'))
+
+
+  // function cadastrarTier() {
+  //       // aguardar();
+
+  //       //Recupere o valor da nova input pelo nome do id
+  //       // Agora vá para o método fetch logo abaixo
+  //       var FitaFavoritaVar = FitaFavorita;
+  //       var PersonagemFavorita = PersonagemFavorita;
+  //       var fkUsuarioVar = fkUsuario
+        
+  //       console.log(FitaFavoritaVar)
+  //       console.log(PersonagemFavorita)
+
+  //       // Enviando o valor da nova input
+  //       fetch("/usuarios/cadastrarTier", {
+  //           method: "POST",
+  //           headers: {
+  //               "Content-Type": "application/json"
+  //           },
+  //           body: JSON.stringify({
+  //               // crie um atributo que recebe o valor recuperado aqui
+  //               // Agora vá para o arquivo routes/usuario.js
+                
+  //               FitaServer: FitaFavoritaVar,
+  //               PersonagemServer: PersonagemFavoritaVar,
+  //               fkUsuarioServer: fkUsuarioVar
+          
+  //           })
+  //       }).then(function (resposta) {
+
+  //           console.log("resposta: ", resposta);
+
+  //           if (resposta.ok) {
+  //               mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+           
+  //           } else {
+  //               throw ("Houve um erro ao tentar realizar o cadastro!");
+  //           }
+  //       }).catch(function (resposta) {
+  //           console.log(`#ERRO: ${resposta}`);           
+  //       });
+  //       return false;
+
+
+        
+  //   }
     
-</script>
 </script>
