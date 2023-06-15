@@ -18,19 +18,19 @@ var sql = require('mssql');
 // }
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-var mySqlConfig = {
-    host: "localhost",
-    database: "ProjectZero",
-    user: "root",
-    password: "sptech"
-};
-
 // var mySqlConfig = {
 //     host: "localhost",
 //     database: "ProjectZero",
-//     user: "aluno",
+//     user: "root",
 //     password: "sptech"
 // };
+
+var mySqlConfig = {
+    host: "localhost",
+    database: "ProjectZero",
+    user: "aluno",
+    password: "sptech"
+};
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js

@@ -105,7 +105,6 @@
       <h3>Resultado</h3>
       <p id="acertos"></p>
       <p id="porcentagem"></p>
-      <button onclick="redirecionar()">Ir para o Ranking</button>
     </div>
 
   </div>
@@ -185,10 +184,22 @@ if (sessionStorage.ID_QUIZ != 'null') {
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
-
             if (resposta.ok) {
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-           
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.ID_QUIZ = json.idQuiz;
+                    sessionStorage.ACERTOS = json.Acertos;
+                    sessionStorage.ERROS = json.Erros;
+
+                    setTimeout(function () {
+                        window.location = "RankingQuiz.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
@@ -201,8 +212,5 @@ if (sessionStorage.ID_QUIZ != 'null') {
         
     }
 
-    function redirecionar() {
-      window.location = "RankingQuiz.html"
-      quiz.style.display = 'none'
-    }
+    
 </script>
